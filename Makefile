@@ -24,3 +24,6 @@ lint:
 
 fix:
 	uv run ruff check --fix
+
+test:
+	uv run gendiff tests/JSON/file1.json tests/JSON/file2.json
