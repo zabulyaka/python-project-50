@@ -1,8 +1,8 @@
 install:
 	uv sync
 
-gendiff:
-	uv run gendiff
+help:
+	uv run gendiff -h
 
 build:
 	uv build
@@ -15,6 +15,9 @@ package-upgrade:
 
 package-uninstall:
 	uv tool uninstall hexlet-code
+
+update:
+	uv tool update-shell
 
 lint:
 	uv run ruff check
