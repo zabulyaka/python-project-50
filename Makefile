@@ -25,5 +25,8 @@ lint:
 fix:
 	uv run ruff check --fix
 
-test:
+try:
 	uv run gendiff tests/JSON/file1.json tests/JSON/file2.json
+
+test:
+	uv run pytest
