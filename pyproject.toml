@@ -4,7 +4,9 @@ version = "0.1.0"
 description = "gendiff"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "argparse>=1.4.0",
+]
 
 [build-system]
 requires = ["hatchling"]
@@ -15,6 +17,7 @@ packages = ["gendiff"]
 
 [dependency-groups]
 dev = [
+    "pytest>=8.3.4",
     "ruff>=0.9.7",
 ]
 

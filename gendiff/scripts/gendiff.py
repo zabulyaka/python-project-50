@@ -1,8 +1,8 @@
-from gendiff.gendiff import greet
+from gendiff.gendiff import run
 
 
 def main():
-    greet()
+    run()
 
 
 if __name__ == "__main__":
