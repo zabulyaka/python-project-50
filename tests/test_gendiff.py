@@ -26,5 +26,5 @@ def json2():
 
 
 def test_generate_diff(json1, json2):
-    result_path:str = get_test_data_path('test_data', 'result_json.txt')
+    result_path: str = get_test_data_path('test_data', 'result_json.txt')
     assert generate_diff(json1, json2) == open(result_path).read()
