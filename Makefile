@@ -26,10 +26,13 @@ fix:
 	uv run ruff check --fix
 
 try:
-	uv run gendiff tests/JSON/file1.json tests/JSON/file2.json
+	uv run gendiff tests/test_data/file1.json tests/test_data/file2.json
 
 test:
 	uv run pytest
 
+test-cov:
+	uv run pytest --cov=gendiff
+
 test-coverage:
-	uv run pytest --cov=gendiff --cov-report xml
+	uv run pytest --cov --cov-report xml

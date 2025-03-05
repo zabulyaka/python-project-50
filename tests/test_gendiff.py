@@ -11,7 +11,7 @@ def get_test_data_path(directory, filename) -> str:
 
 
 def read_json(filename) -> dict:
-    path: str = get_test_data_path('JSON', filename)
+    path: str = get_test_data_path('test_data', filename)
     return json.load(open(path))
 
 
