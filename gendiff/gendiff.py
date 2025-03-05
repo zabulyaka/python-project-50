@@ -32,7 +32,7 @@ def generate_diff(json1: dict, json2: dict) -> str:
             else:
                 result += f'  - {key}: {json1[key]}\n'
                 result += f'  + {key}: {json2[key]}\n'
-    result += '}'
+    result += '}\n'
     return result
 
 

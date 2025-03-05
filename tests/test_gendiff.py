@@ -26,11 +26,5 @@ def json2():
 
 
 def test_generate_diff(json1, json2):
-    assert generate_diff(json1, json2) == '''{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}'''
+    result_path:str = get_test_data_path('test_data', 'result_json.txt')
+    assert generate_diff(json1, json2) == open(result_path).read()
