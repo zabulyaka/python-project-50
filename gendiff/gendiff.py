@@ -1,15 +1,16 @@
 import argparse
-import json
 import copy
+import json
 
 
 def bool_to_str(data: dict) -> dict:
     result: dict = copy.deepcopy(data)
     for key in result.keys():
-        if result[key] == True:
-            result[key] = 'true'
-        elif result[key] == False:
-            result[key] = 'false'
+        if type(result[key]) is bool:
+            if result[key]:
+                result[key] = 'true'
+            else:
+                result[key] = 'false'
     return result
 
 

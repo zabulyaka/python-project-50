@@ -1,11 +1,13 @@
-from gendiff.gendiff import generate_diff
 import json
 from pathlib import Path
+
 import pytest
+
+from gendiff.gendiff import generate_diff
 
 
 def get_test_data_path(directory, filename) -> str:
-    return Path(__file__).parent/directory/filename
+    return Path(__file__).parent / directory / filename
 
 
 def read_json(filename) -> dict:
