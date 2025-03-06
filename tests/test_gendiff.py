@@ -1,6 +1,12 @@
-import json
+from json import load as j_load
 from pathlib import Path
 
+from yaml import load as yam_load
+
+try:
+    from yaml import CLoader as Loader
+except ImportError:
+    from yaml import Loader
 import pytest
 
 from gendiff.gendiff import generate_diff
@@ -12,7 +18,12 @@ def get_test_data_path(directory, filename) -> str:
 
 def read_json(filename) -> dict:
     path: str = get_test_data_path('test_data', filename)
-    return json.load(open(path))
+    return j_load(open(path))
+
+
+def read_yaml(filename) -> dict:
+    path: str = get_test_data_path('test_data', filename)
+    return yam_load(open(path), Loader=Loader)
 
 
 @pytest.fixture
@@ -25,6 +36,21 @@ def json2():
     return read_json('file2.json')
 
 
-def test_generate_diff(json1, json2):
+@pytest.fixture
+def yaml1():
+    return read_yaml('file1.yaml')
+
+
+@pytest.fixture
+def yaml2():
+    return read_yaml('file2.yaml')
+
+
+def test_generate_diff_json_shallow(json1, json2):
     result_path: str = get_test_data_path('test_data', 'result_json.txt')
     assert generate_diff(json1, json2) == open(result_path).read()
+
+
+def test_generate_diff_yaml_shallow(yaml1, yaml2):
+    result_path: str = get_test_data_path('test_data', 'result_yaml.txt')
+    assert generate_diff(yaml1, yaml2) == open(result_path).read()

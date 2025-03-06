@@ -28,6 +28,9 @@ fix:
 try:
 	uv run gendiff tests/test_data/file1.json tests/test_data/file2.json
 
+try2:
+	uv run gendiff tests/test_data/file1.yaml tests/test_data/file2.json
+
 test:
 	uv run pytest
 

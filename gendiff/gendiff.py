@@ -1,51 +1,18 @@
-import argparse
-import copy
-import json
+from gendiff.output import set_diff_json
+from gendiff.parse import get_args, get_data
 
 
-def bool_to_str(data: dict) -> dict:
-    result: dict = copy.deepcopy(data)
-    for key in result.keys():
-        if type(result[key]) is bool:
-            if result[key]:
-                result[key] = 'true'
-            else:
-                result[key] = 'false'
-    return result
-
-
-def generate_diff(json1: dict, json2: dict) -> str:
-    result: str = ''
-    json1 = bool_to_str(json1)
-    json2 = bool_to_str(json2)
-    keys1: set = set(json1.keys())
-    keys2: set = set(json2.keys())
-    result += '{\n'
-    for key in sorted(keys1 | keys2):
-        if key in keys1 - keys2:
-            result += f'  - {key}: {json1[key]}\n'
-        elif key in keys2 - keys1:
-            result += f'  + {key}: {json2[key]}\n' 
-        else:
-            if json1[key] == json2[key]:
-                result += f'    {key}: {json1[key]}\n'
-            else:
-                result += f'  - {key}: {json1[key]}\n'
-                result += f'  + {key}: {json2[key]}\n'
-    result += '}\n'
-    return result
+def generate_diff(file1: dict, file2: dict, output_format='json') -> str:
+    diff: str = ''
+    if output_format == 'json':
+        diff = set_diff_json(file1, file2)
+    return diff
 
 
 def run() -> None:
-    parser = argparse.ArgumentParser(
-                    prog='gendiff',
-                    description='Compares two configuration files\
-                            and shows a difference.')
-    parser.add_argument('first_file')
-    parser.add_argument('second_file')
-    parser.add_argument('-f', '--format', help='set format of output')
-    args = parser.parse_args()
-    file1 = json.load(open(args.first_file))
-    file2 = json.load(open(args.second_file))
-    diff = generate_diff(file1, file2)
+    args: tuple[str, str, str] = get_args()
+    (arg1, arg2, f) = args
+    file1: dict = get_data(arg1)
+    file2: dict = get_data(arg2)
+    diff: str = generate_diff(file1, file2, output_format=f)
     print(diff)
