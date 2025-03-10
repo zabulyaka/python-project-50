@@ -34,6 +34,9 @@ try2:
 try3:
 	uv run gendiff tests/test_data/file1_deep.json tests/test_data/file2_deep.json
 
+try4:
+	uv run gendiff --format plain tests/test_data/file1_deep.json tests/test_data/file2_deep.json
+
 test:
 	uv run pytest
 

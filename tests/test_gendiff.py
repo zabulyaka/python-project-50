@@ -81,6 +81,18 @@ def test_generate_diff_yaml_shallow(yaml1, yaml2):
     assert generate_diff(yaml1, yaml2) == open(result_path).read()
 
 
-def test_denerate_diff_yaml_deep(yaml_deep1, yaml_deep2):
+def test_generate_diff_yaml_deep(yaml_deep1, yaml_deep2):
     result_path: str = get_test_data_path('test_data', 'result_yaml_deep.txt')
     assert generate_diff(yaml_deep1, yaml_deep2) == open(result_path).read()
+
+
+def test_generate_diff_json_plain(json_deep1, json_deep2):
+    result_path: str = get_test_data_path('test_data', 'result_json_plain.txt')
+    assert generate_diff(json_deep1,
+            json_deep2, format_name='plain') == open(result_path).read()
+
+    
+def test_generate_diff_yaml_plain(yaml_deep1, yaml_deep2):
+    result_path: str = get_test_data_path('test_data', 'result_yaml_plain.txt')
+    assert generate_diff(yaml_deep1,
+            yaml_deep2, format_name='plain') == open(result_path).read()

@@ -43,7 +43,7 @@ def set_stylish_view(diff: dict, depth=0) -> str:
                     result += set_info_line(key, new_val, offset=OFFSET_ADD)
                 case 'removed':
                     result += set_info_line(key, old_val, offset=OFFSET_REMOVE)
-                case 'changed':
+                case 'updated':
                     result += set_info_line(key, old_val, offset=OFFSET_REMOVE)
                     result += offset
                     result += set_info_line(key, new_val, offset=OFFSET_ADD)
