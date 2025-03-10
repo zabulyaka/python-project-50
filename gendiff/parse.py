@@ -9,7 +9,7 @@ except ImportError:
     from yaml import Loader
 
 
-def get_args(default_format='json') -> tuple:    
+def get_args(format_name='stylish') -> tuple:    
     parser = argparse.ArgumentParser(
                     prog='gendiff',
                     description='Compares two configuration files\
@@ -20,7 +20,7 @@ def get_args(default_format='json') -> tuple:
     args = parser.parse_args()
     arg1: str = args.first_file
     arg2: str = args.second_file
-    f: str = args.format if args.format else default_format
+    f: str = args.format if args.format else format_name
     return (arg1, arg2, f)
 
 

@@ -31,6 +31,9 @@ try:
 try2:
 	uv run gendiff tests/test_data/file1.yaml tests/test_data/file2.json
 
+try3:
+	uv run gendiff tests/test_data/file1_deep.json tests/test_data/file2_deep.json
+
 test:
 	uv run pytest
 
