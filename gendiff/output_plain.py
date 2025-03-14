@@ -1,8 +1,7 @@
 IGNORED_VALUES = ['null', 'true', 'false', '[complex value]']
 
 
-def set_info_line(key: str,
-        *args, mode='r', is_nested=False) -> str:
+def set_info_line(key: str, *args, mode='r') -> str:
     result = ''
     args = list(map(lambda val: f"'{val}'"
             if val not in IGNORED_VALUES else val, args))

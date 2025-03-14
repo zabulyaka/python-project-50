@@ -1,0 +1,86 @@
+{
+    "common": {
+        "follow": {
+            "_new_value": false,
+            "_status": "added"
+        },
+        "setting1": {
+            "_old_value": "Value 1",
+            "_status": "remained"
+        },
+        "setting2": {
+            "_old_value": 200,
+            "_status": "removed"
+        },
+        "setting3": {
+            "_old_value": true,
+            "_new_value": null,
+            "_status": "updated"
+        },
+        "setting4": {
+            "_new_value": "blah blah",
+            "_status": "added"
+        },
+        "setting5": {
+            "_new_value": {
+                "key5": "value5"
+            },
+            "_status": "added"
+        },
+        "setting6": {
+            "doge": {
+                "wow": {
+                    "_old_value": "",
+                    "_new_value": "so much",
+                    "_status": "updated"
+                }
+            },
+            "key": {
+                "_old_value": "value",
+                "_status": "remained"
+            },
+            "ops": {
+                "_new_value": "vops",
+                "_status": "added"
+            }
+        }
+    },
+    "group1": {
+        "baz": {
+            "_old_value": "bas",
+            "_new_value": "bars",
+            "_status": "updated"
+        },
+        "foo": {
+            "_old_value": "bar",
+            "_status": "remained"
+        },
+        "nest": {
+            "_old_value": {
+                "key": "value"
+            },
+            "_new_value": "str",
+            "_status": "updated"
+        }
+    },
+    "group2": {
+        "_old_value": {
+            "abc": 12345,
+            "deep": {
+                "id": 45
+            }
+        },
+        "_status": "removed"
+    },
+    "group3": {
+        "_new_value": {
+            "deep": {
+                "id": {
+                    "number": 45
+                }
+            },
+            "fee": 100500
+        },
+        "_status": "added"
+    }
+}

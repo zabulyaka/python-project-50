@@ -96,3 +96,9 @@ def test_generate_diff_yaml_plain(yaml_deep1, yaml_deep2):
     result_path: str = get_test_data_path('test_data', 'result_yaml_plain.txt')
     assert generate_diff(yaml_deep1,
             yaml_deep2, format_name='plain') == open(result_path).read()
+
+
+def test_generate_diff_json_to_json(json_deep1, json_deep2):
+    result_path: str = get_test_data_path('test_data', 'result_json_json.txt')
+    assert generate_diff(json_deep1,
+            json_deep2, format_name='json') == open(result_path).read()
