@@ -9,7 +9,7 @@ except ImportError:
     from yaml import Loader
 import pytest
 
-from gendiff.gendiff import generate_diff
+from gendiff.generate_diff import generate_diff
 
 
 def get_test_data_path(directory, filename) -> str:
