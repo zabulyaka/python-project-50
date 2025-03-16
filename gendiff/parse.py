@@ -31,3 +31,4 @@ def get_data(filepath: str) -> dict:
     elif filepath.endswith('.yaml') or filepath.endswith('.yml'):
         data = yam_load(open(filepath), Loader=Loader)
     return data
+

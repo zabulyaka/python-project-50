@@ -1,9 +1,5 @@
 from pathlib import Path
 
-# try:
-#    from yaml import CLoader as Loader
-# except ImportError:
-#    pass
 import pytest
 
 from gendiff.gendiff import generate_diff
@@ -15,13 +11,11 @@ def get_test_data_path(directory, filename) -> str:
 
 def read_json(filename) -> dict:
     path: str = get_test_data_path('test_data', filename)
-#    return j_load(open(path))
     return str(path)
 
 
 def read_yaml(filename) -> dict:
     path: str = get_test_data_path('test_data', filename)
-#    return yam_load(open(path), Loader=Loader)
     return str(path)
 
 
@@ -107,3 +101,4 @@ def test_generate_diff_json_to_json(json_deep1, json_deep2):
     assert generate_diff(json_deep1,
             json_deep2,
             format_name='json') == open(result_path).read().rstrip()
+
