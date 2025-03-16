@@ -67,37 +67,43 @@ def yaml_deep2():
 
 def test_generate_diff_json_shallow(json1, json2):
     result_path: str = get_test_data_path('test_data', 'result_json.txt')
-    assert generate_diff(json1, json2) == open(result_path).read()
+    assert generate_diff(json1, json2) == open(result_path).read().rstrip()
 
 
 def test_generate_diff_json_deep(json_deep1, json_deep2):
     result_path: str = get_test_data_path('test_data', 'result_json_deep.txt')
-    assert generate_diff(json_deep1, json_deep2) == open(result_path).read()
+    assert generate_diff(json_deep1,
+            json_deep2) == open(result_path).read().rstrip()
 
 
 def test_generate_diff_yaml_shallow(yaml1, yaml2):
     result_path: str = get_test_data_path('test_data', 'result_yaml.txt')
-    assert generate_diff(yaml1, yaml2) == open(result_path).read()
+    assert generate_diff(yaml1,
+            yaml2) == open(result_path).read().rstrip()
 
 
 def test_generate_diff_yaml_deep(yaml_deep1, yaml_deep2):
     result_path: str = get_test_data_path('test_data', 'result_yaml_deep.txt')
-    assert generate_diff(yaml_deep1, yaml_deep2) == open(result_path).read()
+    assert generate_diff(yaml_deep1,
+            yaml_deep2) == open(result_path).read().rstrip()
 
 
 def test_generate_diff_json_plain(json_deep1, json_deep2):
     result_path: str = get_test_data_path('test_data', 'result_json_plain.txt')
     assert generate_diff(json_deep1,
-            json_deep2, format_name='plain') == open(result_path).read()
+            json_deep2,
+            format_name='plain') == open(result_path).read().rstrip()
 
     
 def test_generate_diff_yaml_plain(yaml_deep1, yaml_deep2):
     result_path: str = get_test_data_path('test_data', 'result_yaml_plain.txt')
     assert generate_diff(yaml_deep1,
-            yaml_deep2, format_name='plain') == open(result_path).read()
+            yaml_deep2,
+            format_name='plain') == open(result_path).read().rstrip()
 
 
 def test_generate_diff_json_to_json(json_deep1, json_deep2):
     result_path: str = get_test_data_path('test_data', 'result_json_json.txt')
     assert generate_diff(json_deep1,
-            json_deep2, format_name='json') == open(result_path).read()
+            json_deep2,
+            format_name='json') == open(result_path).read().rstrip()

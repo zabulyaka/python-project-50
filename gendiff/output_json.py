@@ -25,5 +25,6 @@ def json_formatted(data, depth=1) -> str:
 def set_json_view(diff: dict) -> str:
     result = '{\n'
     result += json_formatted(diff)
-    return result + '}\n'
+#    return result + '}\n'
+    return result + '}'
 

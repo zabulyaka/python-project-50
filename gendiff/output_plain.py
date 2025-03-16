@@ -32,7 +32,8 @@ def set_plain_view(diff: dict, path='') -> str:
                 new_val = '[complex value]'
             match status:
                 case None:
-                    result += set_plain_view(value, path=path + f'{key}.')
+                    result += set_plain_view(value,
+                            path=path + f'{key}.') + '\n'
                 case 'added':
                     result += set_info_line(path + key, new_val, mode='a')
                 case 'removed':
@@ -40,4 +41,4 @@ def set_plain_view(diff: dict, path='') -> str:
                 case 'updated':
                     result += set_info_line(path + key,
                             old_val, new_val, mode='u')
-    return result
+    return result.rstrip()

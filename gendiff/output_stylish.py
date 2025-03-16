@@ -49,6 +49,7 @@ def set_stylish_view(diff: dict, depth=0) -> str:
                     result += set_info_line(key, new_val, offset=OFFSET_ADD)
         else:
             result += set_info_line(key, value)
-    result += offset + '}' if depth > 0 else offset + '}\n'
-    return result
+#    result += offset + '}' if depth > 0 else offset + '}\n'
+    result += offset + '}'
+    return result 
 
