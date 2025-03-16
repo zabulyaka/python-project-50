@@ -24,10 +24,10 @@ def set_plain_view(diff: dict, path='') -> str:
     for (key, value) in items:
         if isinstance(value, dict):
             status: str = value.get('_status')
-            old_val: str = value.get('_old_value', '')
+            old_val: str = value.get('_old_value')
             if isinstance(old_val, dict):
                 old_val = '[complex value]'
-            new_val: str = value.get('_new_value', '')
+            new_val: str = value.get('_new_value')
             if isinstance(new_val, dict):
                 new_val = '[complex value]'
             match status:
