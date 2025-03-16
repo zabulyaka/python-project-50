@@ -33,20 +33,33 @@ def set_stylish_view(diff: dict, depth=0) -> str:
             new_val: str = value.get('_new_value')
             if isinstance(new_val, dict):
                 new_val = f'{{\n{set_stylish_view(new_val, depth=depth + 1)}'
-            match status:
-                case None:
-                    nested: str = set_stylish_view(value, depth=depth + 1)
-                    result += set_info_line(key, nested, is_nested=True)
-                case 'remained':
-                    result += set_info_line(key, old_val)
-                case 'added':
-                    result += set_info_line(key, new_val, offset=OFFSET_ADD)
-                case 'removed':
-                    result += set_info_line(key, old_val, offset=OFFSET_REMOVE)
-                case 'updated':
-                    result += set_info_line(key, old_val, offset=OFFSET_REMOVE)
-                    result += offset
-                    result += set_info_line(key, new_val, offset=OFFSET_ADD)
+            if status is None:
+                nested: str = set_stylish_view(value, depth=depth + 1)
+                result += set_info_line(key, nested, is_nested=True)
+            elif status == 'remained':
+                result += set_info_line(key, old_val)
+            elif status == 'added':
+                result += set_info_line(key, new_val, offset=OFFSET_ADD)
+            elif status == 'removed':
+                result += set_info_line(key, old_val, offset=OFFSET_REMOVE)
+            elif status == 'updated':
+                result += set_info_line(key, old_val, offset=OFFSET_REMOVE)
+                result += offset
+                result += set_info_line(key, new_val, offset=OFFSET_ADD)
+#            match status:
+#                case None:
+#                    nested: str = set_stylish_view(value, depth=depth + 1)
+#                    result += set_info_line(key, nested, is_nested=True)
+#                case 'remained':
+#                    result += set_info_line(key, old_val)
+#                case 'added':
+#                    result += set_info_line(key, new_val, offset=OFFSET_ADD)
+#                case 'removed':
+#                    result += set_info_line(key, old_val, offset=OFFSET_REMOVE)
+#                case 'updated':
+#                    result += set_info_line(key, old_val, offset=OFFSET_REMOVE)
+#                    result += offset
+#                    result += set_info_line(key, new_val, offset=OFFSET_ADD)
         else:
             result += set_info_line(key, value)
 #    result += offset + '}' if depth > 0 else offset + '}\n'

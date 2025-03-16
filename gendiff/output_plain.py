@@ -7,15 +7,23 @@ def set_info_line(key: str, *args, mode='r') -> str:
             if val not in IGNORED_VALUES and isinstance(val, str)
             else val, args))
     result += f"Property '{key}' was "
-    match mode:
-        case 'r':
-            result += 'removed\n'
-        case 'a':
-            new_val: str = args[0]
-            result += f'added with value: {new_val}\n'
-        case 'u':
-            [old_val, new_val] = args
-            result += f'updated. From {old_val} to {new_val}\n'
+    if mode == 'r':
+        result += 'removed\n'
+    elif mode == 'a':
+        new_val: str = args[0]
+        result += f'added with value: {new_val}\n'
+    elif mode == 'u':
+        [old_val, new_val] = args
+        result += f'updated. From {old_val} to {new_val}\n'
+#    match mode:
+#        case 'r':
+#            result += 'removed\n'
+#        case 'a':
+#            new_val: str = args[0]
+#            result += f'added with value: {new_val}\n'
+#        case 'u':
+#            [old_val, new_val] = args
+#            result += f'updated. From {old_val} to {new_val}\n'
     return result
 
 
@@ -31,15 +39,25 @@ def set_plain_view(diff: dict, path='') -> str:
             new_val: str = value.get('_new_value')
             if isinstance(new_val, dict):
                 new_val = '[complex value]'
-            match status:
-                case None:
-                    result += set_plain_view(value,
-                            path=path + f'{key}.') + '\n'
-                case 'added':
-                    result += set_info_line(path + key, new_val, mode='a')
-                case 'removed':
-                    result += set_info_line(path + key)
-                case 'updated':
-                    result += set_info_line(path + key,
-                            old_val, new_val, mode='u')
+            if status is None:
+                result += set_plain_view(value,
+                        path=path + f'{key}.') + '\n'
+            elif status == 'added':
+                result += set_info_line(path + key, new_val, mode='a')
+            elif status == 'removed':
+                result += set_info_line(path + key)
+            elif status == 'updated':
+                result += set_info_line(path + key,
+                        old_val, new_val, mode='u')
+#            match status:
+#                case None:
+#                    result += set_plain_view(value,
+#                            path=path + f'{key}.') + '\n'
+#                case 'added':
+#                    result += set_info_line(path + key, new_val, mode='a')
+#                case 'removed':
+#                    result += set_info_line(path + key)
+#                case 'updated':
+#                    result += set_info_line(path + key,
+#                            old_val, new_val, mode='u')
     return result.rstrip()
