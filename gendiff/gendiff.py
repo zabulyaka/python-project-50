@@ -41,10 +41,14 @@ def get_diff(file1: dict, file2: dict) -> dict:
     return result
 
 
-def generate_diff(file1: dict, file2: dict, format_name='stylish') -> str:
+# def generate_diff(file1: dict, file2: dict, format_name='stylish') -> str:
+def generate_diff(file1_path: str, file2_path: str,
+        format_name='stylish') -> str:
     result: str = ''
-    file1 = bool_null_to_str(file1)
-    file2 = bool_null_to_str(file2)
+#    file1 = bool_null_to_str(file1)
+#    file2 = bool_null_to_str(file2)
+    file1: dict = bool_null_to_str(get_data(file1_path))
+    file2: dict = bool_null_to_str(get_data(file2_path))
     diff: dict = get_diff(file1, file2)
     if format_name == 'stylish':
         result = set_stylish_view(diff)
@@ -58,7 +62,8 @@ def generate_diff(file1: dict, file2: dict, format_name='stylish') -> str:
 def run() -> None:
     args: tuple[str, str, str] = get_args()
     (arg1, arg2, f) = args
-    file1: dict = get_data(arg1)
-    file2: dict = get_data(arg2)
-    diff: str = generate_diff(file1, file2, format_name=f)
+    diff: str = generate_diff(arg1, arg2, format_name=f)
+#    file1: dict = get_data(arg1)
+#    file2: dict = get_data(arg2)
+#    diff: str = generate_diff(file1, file2, format_name=f)
     print(diff)

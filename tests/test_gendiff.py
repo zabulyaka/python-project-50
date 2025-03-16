@@ -1,12 +1,9 @@
-from json import load as j_load
 from pathlib import Path
 
-from yaml import load as yam_load
-
-try:
-    from yaml import CLoader as Loader
-except ImportError:
-    from yaml import Loader
+# try:
+#    from yaml import CLoader as Loader
+# except ImportError:
+#    pass
 import pytest
 
 from gendiff.gendiff import generate_diff
@@ -18,12 +15,14 @@ def get_test_data_path(directory, filename) -> str:
 
 def read_json(filename) -> dict:
     path: str = get_test_data_path('test_data', filename)
-    return j_load(open(path))
+#    return j_load(open(path))
+    return str(path)
 
 
 def read_yaml(filename) -> dict:
     path: str = get_test_data_path('test_data', filename)
-    return yam_load(open(path), Loader=Loader)
+#    return yam_load(open(path), Loader=Loader)
+    return str(path)
 
 
 @pytest.fixture
