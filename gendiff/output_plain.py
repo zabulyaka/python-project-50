@@ -4,7 +4,8 @@ IGNORED_VALUES = ['null', 'true', 'false', '[complex value]']
 def set_info_line(key: str, *args, mode='r') -> str:
     result = ''
     args = list(map(lambda val: f"'{val}'"
-            if val not in IGNORED_VALUES else val, args))
+            if val not in IGNORED_VALUES and isinstance(val, str)
+            else val, args))
     result += f"Property '{key}' was "
     match mode:
         case 'r':
