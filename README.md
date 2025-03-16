@@ -6,6 +6,10 @@ There are 3 possible formats of display:
 - plain
 - json
 
+The usage:
+
+`gendiff [-h] [--format FORMAT] first_file second_file`
+
 See below the [demonstration](#stylish) of the process.
 
 ### Installation:
@@ -13,13 +17,15 @@ Once you have the directory cloned and unpacked on your device, do the following
 
 Open the terminal window in your OS and open *../python-project-50/* directory in the terminal. Then type:
 
-`make install`
-
-`make build`
-
-`make package-install`
-
-`gendiff [-h] [--format FORMAT] first_file second_file`  
+```sh
+make install
+```
+```sh
+make build
+```
+```sh
+make package-install
+``` 
 
 In order to view help message, type:
 
