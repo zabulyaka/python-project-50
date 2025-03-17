@@ -1,8 +1,8 @@
 import copy
 
-from gendiff.output_json import set_json_view
-from gendiff.output_plain import set_plain_view
-from gendiff.output_stylish import set_stylish_view
+from gendiff.output.output_json import set_json_view
+from gendiff.output.output_plain import set_plain_view
+from gendiff.output.output_stylish import set_stylish_view
 from gendiff.parse import get_args, get_data
 
 

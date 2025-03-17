@@ -1,12 +1,8 @@
 import argparse
 from json import load as j_load
 
+from yaml import CLoader as Loader
 from yaml import load as yam_load
-
-try:
-    from yaml import CLoader as Loader
-except ImportError:
-    from yaml import Loader
 
 
 def get_args(format_name='stylish') -> tuple:    
